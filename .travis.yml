@@ -20,7 +20,7 @@ after_success:
   - docker push gweinheimer/multi-nginx  
   - docker push gweinheimer/multi-server  
   - docker push gweinheimer/multi-worker  
-# deploy
+# deploy to AWS
 deploy:
   provider: elastickbeanstalk
   region: "us-east-1"
