@@ -1,0 +1,26 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t gweinhei/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true gweinhei/react-test npm test
+
+after_success:
+  - docker build -t gweinhei/multi-client ./client
+  - docker build -t gweinhei/multi-nginx ./nginx
+  - docker build -t gweinhei/multi-server ./server
+  - docker build -t gweinhei/multi-multi-worker ./worker
+# push images to dockerhub
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin;
+  - docker push gweinhei/multi-client  
+  - docker push gweinhei/multi-nginx  
+  - docker push gweinhei/multi-server  
+  - docker push gweinhei/multi-worker  
+
+
+
+
