@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t gweinhei/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t gweinheimer/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true gweinhei/react-test npm test
+  - docker run -e CI=true gweinheimer/react-test npm test
 
 after_success:
-  - docker build -t gweinhei/multi-client ./client
-  - docker build -t gweinhei/multi-nginx ./nginx
-  - docker build -t gweinhei/multi-server ./server
-  - docker build -t gweinhei/multi-multi-worker ./worker
+  - docker build -t gweinheimer/multi-client ./client
+  - docker build -t gweinheimer/multi-nginx ./nginx
+  - docker build -t gweinheimer/multi-server ./server
+  - docker build -t gweinheimer/multi-multi-worker ./worker
 # login to docker
 # push images to dockerhub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push gweinhei/multi-client  
-  - docker push gweinhei/multi-nginx  
-  - docker push gweinhei/multi-server  
-  - docker push gweinhei/multi-worker  
+  - docker push gweinheimer/multi-client  
+  - docker push gweinheimer/multi-nginx  
+  - docker push gweinheimer/multi-server  
+  - docker push gweinheimer/multi-worker  
 
 
 
