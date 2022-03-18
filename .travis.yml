@@ -16,7 +16,7 @@ after_success:
 # login to docker
 # push images to dockerhub
 
-  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin;
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin;
   - docker push gweinhei/multi-client  
   - docker push gweinhei/multi-nginx  
   - docker push gweinhei/multi-server  
