@@ -20,6 +20,19 @@ after_success:
   - docker push gweinheimer/multi-nginx  
   - docker push gweinheimer/multi-server  
   - docker push gweinheimer/multi-worker  
+# deploy
+deploy:
+  provider: elastickbeanstalk
+  region: "us-east-1"
+  app: "multi-docker"
+  env: "Multidocker-env"
+  bucket_name: "elasticbeanstalk-us-east-1-783616990833"
+  bucket_path: "multi-docker"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
 
 
 
