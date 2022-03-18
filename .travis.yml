@@ -13,6 +13,7 @@ after_success:
   - docker build -t gweinhei/multi-nginx ./nginx
   - docker build -t gweinhei/multi-server ./server
   - docker build -t gweinhei/multi-multi-worker ./worker
+# login to docker
 # push images to dockerhub
 
   - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin;
