@@ -1,11 +1,9 @@
 version: '3'
 services:
-  nginx:
-    image: "gweinheimer/multi-nginx"
+  client:
+    image: "gweinheimer/multi-client"
     mem_limit: 128m
-    hostname: "nginx"
-    ports: 
-      -"80:80"
+    hostname: "client"
   server:
     image: "gweinheimer/multi-server"
     mem_limit: 128m
@@ -18,10 +16,6 @@ services:
       - PGDATABASE=$PGDATABASE
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
-  client:
-    image: "gweinheimer/multi-client"
-    mem_limit: 128m
-    hostname: "client"
   worker:
     image: "gweinheimer/multi-worker"
     mem_limit: 128m
@@ -29,3 +23,9 @@ services:
     environment: 
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
+  nginx:
+    image: "gweinheimer/multi-nginx"
+    mem_limit: 128m
+    hostname: "nginx"
+    ports: 
+      -"80:80"
