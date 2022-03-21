@@ -12,7 +12,7 @@ after_success:
   - docker build -t gweinheimer/multi-client ./client
   - docker build -t gweinheimer/multi-nginx ./nginx
   - docker build -t gweinheimer/multi-server ./server
-  - docker build -t gweinheimer/multi-multi-worker ./worker
+  - docker build -t gweinheimer/multi-worker ./worker
 # login to docker
 # push images to dockerhub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
